@@ -9,11 +9,15 @@ st.set_page_config(page_title="Suivi Quotidien", layout="centered")
 st.title("📋 Suivi Quotidien")
 
 # --- Mot de passe ---
+mdp_secret = os.getenv("MOT_DE_PASSE")
+
 mdp = st.text_input("🔒 Entrez le mot de passe :", type="password")
-if mdp != "6765EliEti!":
+if mdp != mdp_secret:
     st.warning("Mot de passe incorrect ou manquant.")
     st.stop()
 
+# Le reste de ton code ici
+st.write("Bienvenue dans ton application sécurisée !")
 # --- Saisie des données ---
 with st.form("form_suivi"):
     pas = st.number_input("👣 Nombre de pas", min_value=0, step=100)
